@@ -1,0 +1,51 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Terminus;
+    font-size: medium;
+    min-height: 0;
+}
+window#waybar {
+    background: rgba(0, 0, 0, 0.2);
+    color: #222D31;
+
+}
+#workspaces button {
+    padding: 0 10px;
+    background: #222D31;
+    color: #FFEFCB;
+
+}
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+#workspaces button.focused {
+    background: #FFEFCB;
+    color: #222D31;
+}
+
+#mode, #cpu, #clock, #xmr, #memory, #temperature.cpu, #temperature, #backlight, #battery, #temperature.gpu, #pulseaudio, #pulseaudio.muted, #idle_inhibitor {
+    padding: 0 10px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #FFEFCB;
+    font-family: Terminus;
+    font-size: medium;
+}
+#mode {
+}
+#memory {
+}
+#temperature.cpu {
+}
+#temperature.gpu {
+}
+#clock {
+}
+#idle_inhibitor {
+}
+#pulseaudio {
+}
+#pulseaudio.muted {
+}
