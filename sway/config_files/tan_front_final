@@ -34,9 +34,11 @@ exec swaybg -i ~/.config/sway/wallpaper.png -m fill
 # Example configuration:
 #
 output eDP-1 resolution 2256x1504@59.999HZ scale 1.5 position 0 0
+#output eDP-1 resolution 2256x1504@47.998HZ scale 1.5 position 0 0
 # Add scale 1.5 if necessary.
 output DP-2 resolution 1920x1080@120HZ position 1920 0
 output HDMI-A-1 resolution 1920x1080@120HZ position 0 0
+output DP-3 resolution 1920x1080@60HZ
 
 set $laptop_screen 'eDP-1'
 bindswitch --reload --locked lid:on exec '[ $(swaymsg -t get_outputs | grep name | wc -l) == 1 ] && ($sleep) || ($notify "Clamshell mode" "Laptop screen off" && swaymsg output $laptop_screen disable)'
@@ -112,7 +114,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
     bindsym $mod+F3 exec thunar
 
     # Start Swaylock 
-    bindsym $mod+Shift+x exec swaylock -f --indicator-radius 25 --indicator-x-position 50 --indicator-y-position 950 --image /usr/share/wallpapers/Wallpaper.png
+    bindsym $mod+Shift+x exec swaylock -f --indicator-radius 25 --indicator-x-position 50 --indicator-y-position 950 --image ~/.config/sway/wallpapers/train_car_tunnel.png
 
     bindsym $mod+Shift+z exec systemctl suspend
 
@@ -246,16 +248,19 @@ bindsym $mod+r mode "resize"
 #
 gaps inner 5
 gaps outer 5
-#default_border pixel 3
 smart_gaps on
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #c0c0c0 #000080 #ffffff #E0E0E0 #c0c0c0
-  client.focused_inactive #404040 #c0c0c0 #000000 #404040 #c0c0c0
-  client.unfocused        #404040 #c0c0c0 #000000 #404040 #c0c0c0
-  client.urgent           #000080 #000080 #000080 #000080 #000080
-  client.placeholder      #000000 #0c0c0c #000000 #000000 #000000
-  client.background       #c0c0c0
+  client.focused          #FFEFCB #FFEFCB #222D31 #FFEFCB
+  client.focused_inactive #222D31 #222D31 #FFEFCB #222D31 
+  client.unfocused        #222D31 #222D31 #FFEFCB #222D31 
+  client.urgent           #ffffff #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+  client.background       #2B2C2B
+
+
+
 
 #
 # Status Bar:

@@ -20,7 +20,7 @@ set $term foot
 # on the original workspace that the command was run on.
 set $menu exec rofi -show drun
 # Font
-font Sans Serif Regular 11
+font Terminess Nerd Font Complete Mono 11
 # Cursor
 #set $cursor_theme Adwaita 
 #set $cursor_size 24
@@ -29,14 +29,14 @@ font Sans Serif Regular 11
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-exec swaybg -i ~/.config/sway/wallpaper.png -m fill
+exec swaybg -i /usr/share/wallpapers/Wallpaper2.png -m fill
 #
 # Example configuration:
 #
 output eDP-1 resolution 2256x1504@59.999HZ scale 1.5 position 0 0
 # Add scale 1.5 if necessary.
 output DP-2 resolution 1920x1080@120HZ position 1920 0
-output HDMI-A-1 resolution 1920x1080@120HZ position 0 0
+output HDMI-A-1 resolution 1920x1080@60HZ position 0 0
 
 set $laptop_screen 'eDP-1'
 bindswitch --reload --locked lid:on exec '[ $(swaymsg -t get_outputs | grep name | wc -l) == 1 ] && ($sleep) || ($notify "Clamshell mode" "Laptop screen off" && swaymsg output $laptop_screen disable)'
@@ -49,12 +49,10 @@ bindswitch --reload --locked lid:off output $laptop_screen enable
 #
 # Example configuration:
 #
-# Change it back to 3600 for the first one and 300 for the next!!!!
-#
  exec swayidle -w \
-          timeout 3600 'swaylock -f --indicator-radius 25 --indicator-x-position 50 --indicator-y-position 950 --image ~/.config/sway/wallpapers/train_car_tunnel.png' \
+          timeout 3600 'swaylock -f --indicator-radius 25 --indicator-x-position 50 --indicator-y-position 950 --image /usr/share/wallpapers/Wallpaper.png' \
           timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f --indicator-radius 25 --indicator-x-position 50 --indicator-y-position 950 --image ~/.config/sway/wallpapers/train_car_tunnel.png'
+          before-sleep 'swaylock -f --indicator-radius 25 --indicator-x-position 50 --indicator-y-position 950 --image /usr/share/wallpapers/Wallpaper.png'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -88,7 +86,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
     exec swaycons
 
     # Take a Screenshot
-    bindsym $mod+F12 exec grim ~/Pictures/Photos/Screenshots/$(date +'%s_grim.png')
+    bindsym $mod+F12 exec grim ~/Documents/Photos/Screenshots/$(date +'%s_grim.png')
 
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -246,16 +244,19 @@ bindsym $mod+r mode "resize"
 #
 gaps inner 5
 gaps outer 5
-#default_border pixel 3
 smart_gaps on
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #c0c0c0 #000080 #ffffff #E0E0E0 #c0c0c0
-  client.focused_inactive #404040 #c0c0c0 #000000 #404040 #c0c0c0
-  client.unfocused        #404040 #c0c0c0 #000000 #404040 #c0c0c0
-  client.urgent           #000080 #000080 #000080 #000080 #000080
-  client.placeholder      #000000 #0c0c0c #000000 #000000 #000000
-  client.background       #c0c0c0
+  client.focused          #FFEFCB #FFEFCB #222D31 #FFEFCB
+  client.focused_inactive #222D31 #222D31 #FFEFCB #222D31 
+  client.unfocused        #222D31 #222D31 #FFEFCB #222D31 
+  client.urgent           #ffffff #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+  client.background       #2B2C2B
+
+
+
 
 #
 # Status Bar:
