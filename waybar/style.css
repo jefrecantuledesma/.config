@@ -1,51 +1,92 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Terminus;
+    font-family: "Sans Serif", "Font Awesome 5 Free";
     font-size: medium;
     min-height: 0;
 }
 window#waybar {
-    background: rgba(0, 0, 0, 0.2);
-    color: #222D31;
+    background: #c0c0c0;
+    color: #000000;
+    box-shadow: 0px 0px 3px 0px #00000;
+    border-bottom: solid 1px #E0E0E0;
 
 }
 #workspaces button {
-    padding: 0 10px;
-    background: #222D31;
-    color: #FFEFCB;
+    padding: 5px 10px;
+    margin: 5px 3px;
+    background: #c0c0c0;
+    color: #000000;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000;
 
 }
+
 #workspaces button:hover {
-    box-shadow: inherit;
-    text-shadow: inherit;
-}
-#workspaces button.focused {
-    background: #FFEFCB;
-    color: #222D31;
+    box-shadow: 0px 0px 0px;
+    text-shadow: none;
+    background: #E0E0E0;
 }
 
-#mode, #cpu, #clock, #xmr, #memory, #temperature.cpu, #temperature, #backlight, #battery, #temperature.gpu, #pulseaudio, #pulseaudio.muted, #idle_inhibitor {
-    padding: 0 10px;
-    margin: 0 5px;
-    background-color: rgba(0, 0, 0, 0);
-    color: #FFEFCB;
-    font-family: Terminus;
-    font-size: medium;
+#workspaces button.focused {
+    background: #E0E0E0;
+    color: #000000;
 }
-#mode {
+
+#window {
+    padding: 5px 5px;
+    margin: 5px 3px;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000;
+}
+
+#battery,
+#backlight,
+#pulseaudio,
+#memory,
+#cpu,
+#temperature,
+#clock {
+    padding: 5px 5px;
+    margin: 5px 3px;
+    background-color: #c0c0c0;
+    color: #000000;
+    font-family: "Sans Serif", "Font Awesome 5 Free";
+    font-size: medium;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000;
+}
+
+#pulseaudio:hover {
+    background-color: #E0E0E0;
+    box-shadow: none;
+}
+#temperature {
+    color: #000000
+}
+#cpu {
+    color: #000000
 }
 #memory {
-}
-#temperature.cpu {
-}
-#temperature.gpu {
-}
-#clock {
-}
-#idle_inhibitor {
+    color: #000000
 }
 #pulseaudio {
+    color: #000000
 }
-#pulseaudio.muted {
+#backlight {
+    color: #000000
 }
+#battery{
+    color: #000000
+}
+#clock {
+    color: #000000
+}
+
+

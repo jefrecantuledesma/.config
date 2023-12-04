@@ -1,0 +1,48 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Sans Serif", "Font Awesome 5 Free";
+    font-size: medium;
+    min-height: 0;
+}
+window#waybar {
+    background: rgba(35, 45, 49, 0.2);
+    color: #222d31;
+
+}
+#workspaces button {
+    padding: 0 10px;
+    background: #222D31;
+    color: #FFEFCB;
+    box-shadow: none;
+
+}
+#workspaces button:hover {
+    box-shadow: 0px 0px 0px;
+    text-shadow: none;
+}
+#workspaces button.focused {
+    background: #FFEFCB;
+    color: #222D31;
+}
+
+#cpu, #clock, #xmr, #memory, #temperature.cpu, #temperature, #backlight, #battery, #temperature.gpu, #pulseaudio, #pulseaudio.muted {
+    padding: 0 10px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0);
+    color: #FFEFCB;
+    font-family: "Sans Serif", "Font Awesome 5 Free";
+    font-size: medium;
+}
+#memory {
+}
+#temperature.cpu {
+}
+#temperature.gpu {
+}
+#clock {
+}
+#pulseaudio {
+}
+#pulseaudio.muted {
+}
