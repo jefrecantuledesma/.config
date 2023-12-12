@@ -9,9 +9,10 @@ window#waybar {
     background: #c0c0c0;
     color: #000000;
     box-shadow: 0px 0px 3px 0px #00000;
-    border-bottom: solid 1px #E0E0E0;
+    border-bottom: solid 1px #404040;
 
 }
+
 #workspaces button {
     padding: 5px 10px;
     margin: 5px 3px;
@@ -35,8 +36,12 @@ window#waybar {
     color: #000000;
 }
 
+#image-start {
+
+}
+
 #window {
-    padding: 5px 5px;
+    padding: 5px 10px;
     margin: 5px 3px;
     border-left: 1px solid #ffffff;
     border-top: 1px solid #ffffff;
@@ -46,7 +51,7 @@ window#waybar {
 
 #battery,
 #backlight,
-#pulseaudio,
+#wireplumber,
 #memory,
 #cpu,
 #temperature,
@@ -63,30 +68,10 @@ window#waybar {
     box-shadow: 1px 1px 1px 0px #000000;
 }
 
-#pulseaudio:hover {
-    background-color: #E0E0E0;
-    box-shadow: none;
-}
-#temperature {
-    color: #000000
-}
-#cpu {
-    color: #000000
-}
-#memory {
-    color: #000000
-}
-#pulseaudio {
-    color: #000000
-}
-#backlight {
-    color: #000000
-}
-#battery{
-    color: #000000
-}
-#clock {
-    color: #000000
-}
+/*#battery button:hover,*/
 
+/*#pulseaudio:hover {
+    background-color: #E0E0E0;
+    box-shadow: 0px 0px 0px;
+}*/
 

@@ -5,12 +5,12 @@
     // "width": 1280, // Waybar width
     "spacing": 1, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
+    "modules-left": ["image/start", "sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
     "modules-center": ["sway/window"],
     "modules-right": ["temperature", 
     "cpu", 
     "memory", 
-    "pulseaudio", 
+    "wireplumber",
     "backlight", 
     "battery",
     "clock", 
@@ -31,8 +31,20 @@
              "10": "10",
         }
      },
+     "image/start": {
+        "path": "/home/fribbit/.icons/Chicago95/places/22/start-here.png",
+        "size": 32,
+        "interval": 5,
+     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/window": {
+        "format": "{title}",
+        "max-length": 50,
+        "all-outputs": true,
+        "offscreen-css": true,
+        "offscreen-css-text": "Inactive"
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
@@ -80,19 +92,10 @@
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
     },
-    "pulseaudio": {
+    "wireplumber": {
         "format": "{volume}% {icon}",
-        "format-muted": "󰝟 {format_source}",
-        "format-source-muted": "󰝟",
-        "format-icons": {
-            "headphone": "󰋋",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [""]
-        },
-        "on-click": "pavucontrol"
+        "format-muted": "",
+        "on-click": "helvum",
+        "format-icons": ["󰕿", "󰖀", "󰕾"]
     },
    }
