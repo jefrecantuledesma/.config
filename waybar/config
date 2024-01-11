@@ -60,7 +60,8 @@
     "clock": {
         "timezone": "America/New_York",
         "interval": 60,
-        "format": "{:%m/%d %H:%M}"
+        //"format": "{:%m/%d %H:%M}"
+        "format": "{:%F | %I:%M %p}"
     },
     "cpu": {
         "format": "{usage}% ",
