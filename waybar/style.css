@@ -36,8 +36,24 @@ window#waybar {
     color: #000000;
 }
 
-#image-start {
+#custom-start {
+    padding: 5px 5px;
+    margin: 5px 3px;
+    font-weight: bold;
+    background: url('/home/fribbit/.icons/Chicago95-tux/places/scalable/start-here.svg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000; 
+}
 
+#custom-start:hover {
+    background: #000000;
+    box-shadow: 0px 0px 0px;
+    text-shadow: none;
 }
 
 #window {
@@ -49,11 +65,91 @@ window#waybar {
     box-shadow: 1px 1px 1px 0px #000000;
 }
 
-#battery,
-#backlight,
-#wireplumber,
-#memory,
-#cpu,
+#battery{
+    padding: 5px 5px;
+    margin: 5px 3px;
+    background-color: #c0c0c0;
+    color: #000000;
+    font-family: "Sans Serif", "Font Awesome 5 Free";
+    font-size: medium;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000;
+    background-image: url('/home/fribbit/.icons/Chicago95-tux/devices/scalable/battery.svg');
+    background-position: right;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+#backlight{
+    padding: 5px 5px;
+    margin: 5px 3px;
+    background-color: #c0c0c0;
+    color: #000000;
+    font-family: "Sans Serif", "Font Awesome 5 Free";
+    font-size: medium;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000;
+    background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/sunny.svg');
+    background-position: right;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+#wireplumber{
+    padding: 5px 5px;
+    margin: 5px 3px;
+    background-color: #c0c0c0;
+    color: #000000;
+    font-family: "Sans Serif", "Font Awesome 5 Free";
+    font-size: medium;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000;
+    background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/audio-volume-high.svg');
+    background-position: right;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+#memory{
+    padding: 5px 5px;
+    margin: 5px 3px;
+    background-color: #c0c0c0;
+    color: #000000;
+    font-family: "Sans Serif", "Font Awesome 5 Free";
+    font-size: medium;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000;
+    background-image: url('/home/fribbit/.icons/Chicago95-tux/devices/scalable/computer-laptop.svg');
+    background-position: right;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+#cpu{
+    padding: 5px 5px;
+    margin: 5px 3px;
+    background-color: #c0c0c0;
+    color: #000000;
+    font-family: "Sans Serif", "Font Awesome 5 Free";
+    font-size: medium;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000;
+    background-image: url('/home/fribbit/.icons/Chicago95-tux/devices/scalable/processor.svg');
+    background-position: right;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
 #temperature{
     padding: 5px 5px;
     margin: 5px 3px;
@@ -65,6 +161,11 @@ window#waybar {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #404040;
     box-shadow: 1px 1px 1px 0px #000000;
+    background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/weather-few-clouds.svg');
+    background-position: right;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
 }
 #clock{
     padding: 5px 5px;
@@ -73,11 +174,16 @@ window#waybar {
     color: #000000;
     font-family: "Sans Serif", "Font Awesome 5 Free";
     font-size: medium;
-    border-left: 1px solid #000000;
+    border-left: 0.5px solid #000000;
     border-top: 1px solid #000000;
-    border-bottom: 0.5px solid #ffffff;
-    border-right: 0.5px solid #ffffff;
-    box-shadow: 1px 1px 0px #ffffff;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    box-shadow: -1px -0.5px 0px 0px #000000;
+    background-image: url("/home/fribbit/.icons/Chicago95-tux/apps/scalable/clock.svg");
+    background-position: right;
+    background-size: 13%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
 }
 
 /*#battery button:hover,*/
