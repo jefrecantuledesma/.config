@@ -5,12 +5,24 @@
     font-size: medium;
     min-height: 0;
 }
+
 window#waybar {
     background: #c0c0c0;
     color: #000000;
     box-shadow: 0px 0px 3px 0px #00000;
     border-bottom: solid 1px #404040;
 
+}
+
+#scratchpad {
+    padding: 5px 10px;
+    margin: 5px 3px;
+    background: #c0c0c0;
+    color: #000000;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000;
 }
 
 #workspaces button {
@@ -47,13 +59,26 @@ window#waybar {
     border-left: 1px solid #ffffff;
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #404040;
-    box-shadow: 1px 1px 1px 0px #000000; 
+    box-shadow: 1px 1px 1px 0px #000000;
 }
 
 #custom-start:hover {
-    background: #000000;
+    background: url('/home/fribbit/.icons/Chicago95-tux/places/scalable/start-here.svg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
     box-shadow: 0px 0px 0px;
     text-shadow: none;
+}
+
+#custom-start:active {
+    background: url('/home/fribbit/.icons/Chicago95-tux/places/scalable/start-here.svg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    box-shadow: 0px 0px 0px;
+    text-shadow: none;
+    background-color: #f0f0f0;
 }
 
 #window {
@@ -65,7 +90,7 @@ window#waybar {
     box-shadow: 1px 1px 1px 0px #000000;
 }
 
-#battery{
+#battery {
     padding: 5px 5px;
     margin: 5px 3px;
     background-color: #c0c0c0;
@@ -82,7 +107,8 @@ window#waybar {
     background-repeat: no-repeat;
     background-origin: content-box;
 }
-#backlight{
+
+#backlight {
     padding: 5px 5px;
     margin: 5px 3px;
     background-color: #c0c0c0;
@@ -99,7 +125,8 @@ window#waybar {
     background-repeat: no-repeat;
     background-origin: content-box;
 }
-#wireplumber{
+
+#wireplumber {
     padding: 5px 5px;
     margin: 5px 3px;
     background-color: #c0c0c0;
@@ -116,7 +143,26 @@ window#waybar {
     background-repeat: no-repeat;
     background-origin: content-box;
 }
-#memory{
+
+#pulseaudio {
+    padding: 5px 5px;
+    margin: 5px 3px;
+    background-color: #c0c0c0;
+    color: #000000;
+    font-family: "Sans Serif", "Font Awesome 5 Free";
+    font-size: medium;
+    border-left: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #404040;
+    box-shadow: 1px 1px 1px 0px #000000;
+    background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/audio-volume-high.svg');
+    background-position: right;
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+
+#memory {
     padding: 5px 5px;
     margin: 5px 3px;
     background-color: #c0c0c0;
@@ -133,7 +179,8 @@ window#waybar {
     background-repeat: no-repeat;
     background-origin: content-box;
 }
-#cpu{
+
+#cpu {
     padding: 5px 5px;
     margin: 5px 3px;
     background-color: #c0c0c0;
@@ -150,7 +197,8 @@ window#waybar {
     background-repeat: no-repeat;
     background-origin: content-box;
 }
-#temperature{
+
+#temperature {
     padding: 5px 5px;
     margin: 5px 3px;
     background-color: #c0c0c0;
@@ -167,7 +215,8 @@ window#waybar {
     background-repeat: no-repeat;
     background-origin: content-box;
 }
-#clock{
+
+#clock {
     padding: 5px 5px;
     margin: 5px 3px;
     background-color: #b0b0b0;
@@ -192,4 +241,3 @@ window#waybar {
     background-color: #E0E0E0;
     box-shadow: 0px 0px 0px;
 }*/
-

@@ -11,6 +11,7 @@
     "cpu", 
     "memory", 
     "wireplumber",
+    //"pulseaudio",
     "backlight", 
     "battery",
     "clock", 
@@ -32,7 +33,7 @@
         }
      },
      "custom/start": {
-     "format": "      Start",
+     "format": "       Start",
      "tooltip": false,
      "on-click": "exec wofi -m -I --show drun"
      },
@@ -47,7 +48,7 @@
         "offscreen-css-text": "Inactive"
     },
     "sway/scratchpad": {
-        "format": "{icon} {count}",
+        "format": "{icon}",
         "show-empty": false,
         "format-icons": ["", ""],
         "tooltip": true,
@@ -72,6 +73,7 @@
         "tooltip": false
     },
     "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
         "critical-threshold": 80,
         "format": "{temperatureC}°C     ",
         "format-icons": ["", "", ""]
@@ -88,15 +90,21 @@
             "critical": 15
         },
         "format": "{capacity}%   ",
-        "format-charging": "{capacity}% 󰂄",
-        "format-plugged": "{capacity}% 󰂄",
+        "format-charging": "{capacity}%    ",
+        "format-plugged": "{capacity}%    ",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "format": "{volume}%   ",
+        "format-muted": "",
+        "on-click": "qpwgraph",
+        "format-icons": ["󰕿", "󰖀", "󰕾"]
     },
     "wireplumber": {
         "format": "{volume}%   ",
         "format-muted": "",
-        "on-click": "helvum",
+        "on-click": "qpwgraph",
         "format-icons": ["󰕿", "󰖀", "󰕾"]
     },
    }
