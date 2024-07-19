@@ -1,94 +1,61 @@
-
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 ### Variables
-#
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
 set $left j
 set $down k
 set $up l
 set $right semicolon
-# Your preferred terminal emulator
 set $term foot
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu exec rofi -show drun
-# Font
+set $menu exec wofi -m -I --show drun
 font Sans Serif Regular 11
-# Cursor
-#set $cursor_theme Adwaita 
-#set $cursor_size 24
-#seat seat0 xcursor_theme $cursor_theme $cursor_size
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-exec swaybg -i ~/.config/sway/wallpaper.png -m fill
+
 #
 # Example configuration:
 #
-output eDP-1 resolution 2256x1504@59.999HZ scale 1.5 position 0 0
-# Add scale 1.5 if necessary.
-output DP-2 resolution 1920x1080@120HZ position 1920 0
-output HDMI-A-1 resolution 1920x1080@120HZ position 0 0
+# output "BOE 0x0BCA Unknown" resolution 2256x1504@59.999HZ scale 1.5 position 0 0
+output "BOE 0x0BCA Unknown" resolution 2256x1504@59.999HZ scale 1.5 position 1280 1080
+# output eDP-1 resolution 2256x1504@59.999HZ scale 1.5
+# #Add scale 1.5 if necessary.
+output "Acer Technologies Acer XF270H B 0x9372943C" resolution 1920x1080@143.992HZ position 1280 0
+output "Acer Technologies GN246HL LW3AA0018533" resolution 1920x1080@60HZ position 3200 0
+output "Unknown Unknown Unknown" resolution 640x480@59.950HZ scale 0.5 position 0 0
+
+exec swaybg -i ~/.config/sway/wallpaper.png -m fill
+bindsym $mod+Shift+B exec swaybg -i ~/.config/sway/wallpaper.png -m fill
 
 set $laptop_screen 'eDP-1'
-bindswitch --reload --locked lid:on exec '[ $(swaymsg -t get_outputs | grep name | wc -l) == 1 ] && ($sleep) || ($notify "Clamshell mode" "Laptop screen off" && swaymsg output $laptop_screen disable)'
+bindswitch --reload --locked lid:on exec '[ $(swaymsg -t get_outputs | grep name | wc -l) == 1 ] && exec swaylock -f && sleep 1 && ($sleep) || ($notify "Clamshell mode" "Laptop screen off" && swaymsg output $laptop_screen disable)'
 
 bindswitch --reload --locked lid:off output $laptop_screen enable
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
 
-### Idle configuration
-#
-# Example configuration:
-#
-# Change it back to 3600 for the first one and 300 for the next!!!!
-#
- exec swayidle -w \
-          timeout 3600 'swaylock -f --indicator-radius 25 --indicator-x-position 50 --indicator-y-position 950 --image ~/.config/sway/wallpapers/train_car_tunnel.png' \
-          timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f --indicator-radius 25 --indicator-x-position 50 --indicator-y-position 950 --image ~/.config/sway/wallpapers/train_car_tunnel.png'
+exec swayidle -w \
+          timeout 300 'exec playerctl pause & exec /home/fribbit/.config/sway/scripts/lock_and_usbkill.sh' \
+          timeout 600 'exec systemctl suspend'\
+          timeout 1200 'exec systemctl hibernate'
 
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-#
 # AUDIO CONTROLS
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-#
-# VIDEO CONTROLS
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessDown exec brightnessctl set 1%-
 bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
 
 ### Input configuration
-#
-# Example configuration:
-#
    input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
        tap enabled
        natural_scroll enabled
+dwt disabled
    }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
-#
-# Basics:
-#
-    # Start Swaycons
-    exec swaycons
-
     # Take a Screenshot
-    bindsym $mod+F12 exec grim ~/Pictures/Photos/Screenshots/$(date +'%s_grim.png')
+    bindsym $mod+F12 exec grim ~/Pictures/screenshots/$(date +'%s_grim.png')
 
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -112,22 +79,26 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
     bindsym $mod+F3 exec thunar
 
     # Start Swaylock 
-    bindsym $mod+Shift+x exec swaylock -f --indicator-radius 25 --indicator-x-position 50 --indicator-y-position 950 --image /usr/share/wallpapers/Wallpaper.png
+    #bindsym $mod+Shift+x exec swaylock -f --indicator-radius 25 --indicator-x-position 50 --indicator-y-position 950 --image /home/fribbit/.config/sway/wallpapers/train_car_tunnel.png; exec $term -e usbkill-git
+    bindsym $mod+Shift+x exec swaylock -f && playerctl pause
 
-    bindsym $mod+Shift+z exec systemctl suspend
+    bindsym $mod+Shift+z exec swaylock -f && sleep 2 && systemctl suspend
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
+    bindsym $mod+Shift+Mod1+z exec systemctl hibernate
+
+    bindsym $mod+Shift+p exec palm-detection-switch
+
+    bindsym $mod+Shift+g exec smart-gaps-switch
+
+    # Can also be inverse for right click drag, left resize
     floating_modifier $mod normal
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec sway exit
 #
 # Moving around:
 #
@@ -175,9 +146,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
     bindsym $mod+Shift+7 move container to workspace number 7
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
+    bindsym $mod+Shift+0 move container to workspace number 10 
 #
 # Layout stuff:
 #
@@ -203,26 +172,18 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+    bindsym $mod+Shift+a focus child
 #
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+minus move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
@@ -246,46 +207,42 @@ bindsym $mod+r mode "resize"
 #
 gaps inner 5
 gaps outer 5
-#default_border pixel 3
 smart_gaps on
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #c0c0c0 #000080 #ffffff #E0E0E0 #c0c0c0
+  client.focused          #E0E0E0 #000080 #ffffff #E0E0E0 #E0E0E0
   client.focused_inactive #404040 #c0c0c0 #000000 #404040 #c0c0c0
-  client.unfocused        #404040 #c0c0c0 #000000 #404040 #c0c0c0
+  client.unfocused        #4c4c4c #c0c0c0 #000000 #4c4c4c #4c4c4c
   client.urgent           #000080 #000080 #000080 #000080 #000080
   client.placeholder      #000000 #0c0c0c #000000 #000000 #000000
   client.background       #c0c0c0
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
+#shadows enable
+#shadow_blur_radius 5
+#shadow_color #0c0c0c
+#blur enable
+#blur_passes 1
+#blur_radius 4
+#corner_radius 2
+#default_dim_inactive .05
+#titlebar_separator enable
 
+# for_window [class=".*"] tabbed enable, border normal
+# for_window [app_id=".*"] tabbed enable, border normal
+for_window [class="FLTK"] floating enable, border normal
+for_window [app_id="galculator"] floating enable, border normal
+default_border normal
+smart_borders on
+smart_gaps on 
 bar {
 
     swaybar_command waybar
 
-    position top
-
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        background #00000b4d
-        statusline #c5e7f7 
-        separator  #EEE8D5
-
-#                      border  backgr. text
-        focused_workspace  #DAF0F7 #DAF0F7 #b19cd8
-        active_workspace   #222D31 #222D31 #FFEFCB
-        inactive_workspace #222D31 #222D31 #FFEFCB
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
 }
 
-seat seat0 xcursor_theme Hackneyed
+# seat seat0 xcursor_theme Hackneyed
 
 include /etc/sway/config.d/*
