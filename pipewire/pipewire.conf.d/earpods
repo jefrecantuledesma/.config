@@ -7,68 +7,68 @@ context.modules = [
     { name = libpipewire-module-filter-chain
         args = {
             node.description = "Equalizer Sink"
-            media.name       = "Studio3"
+            media.name       = "Earpods"
             filter.graph = {
                 nodes = [
                     {
                         type  = builtin
                         name  = eq_band_1
                         label = bq_peaking
-                        control = { "Freq" = 73.0 "Q" = 1.3 "Gain" = -4.2 }
+                        control = { "Freq" = 69.0 "Q" = 3.84 "Gain" = 0.9 }
                     }
                     {
                         type  = builtin
                         name  = eq_band_2
-                        label = bq_lowshelf
-                        control = { "Freq" = 105.0 "Q" = 0.71 "Gain" = 5.5 }
+                        label = bq_peaking
+                        control = { "Freq" = 104.0 "Q" = 2.24 "Gain" = -0.7 }
                     }
                     {
                         type  = builtin
                         name  = eq_band_3
-                        label = bq_peaking
-                        control = { "Freq" = 150.0 "Q" = 1.4 "Gain" = 0.8 }
+                        label = bq_lowshelf
+                        control = { "Freq" = 105.0 "Q" = 0.7 "Gain" = 6.1 }
                     }
                     {
                         type  = builtin
                         name  = eq_band_4
                         label = bq_peaking
-                        control = { "Freq" = 380.0 "Q" = 1.0 "Gain" = -5.2 }
+                        control = { "Freq" = 517.0 "Q" = 0.47 "Gain" = 2.8 }
                     }
                     {
                         type  = builtin
                         name  = eq_band_5
                         label = bq_peaking
-                        control = { "Freq" = 620.0 "Q" = 1.3 "Gain" = 4.3 }
+                        control = { "Freq" = 1953.0 "Q" = 0.83 "Gain" = -14.2 }
                     }
                     {
                         type  = builtin
                         name  = eq_band_6
                         label = bq_peaking
-                        control = { "Freq" = 2150.0 "Q" = 1.0 "Gain" = 6.0 }
+                        control = { "Freq" = 3834.0 "Q" = 0.54 "Gain" = 12.4 }
                     }
                     {
-                        type = builtin
-                        name = eq_band_7
+                        type  = builtin
+                        name  = eq_band_7
                         label = bq_peaking
-                        control = { "Freq" = 3100.0 "Q" = 3.0 "Gain" = -3.9}
+                        control = { "Freq" = 5473.0 "Q" = 1.93 "Gain" = -11.3 }
                     }
                     {
-                        type = builtin
-                        name = eq_band_8
+                        type  = builtin
+                        name  = eq_band_8
                         label = bq_peaking
-                        control = { "Freq" = 3700.0 "Q" = 3.0 "Gain" = -2.3}
+                        control = { "Freq" = 6382.0 "Q" = 6 "Gain" = 0.9 }
                     }
                     {
-                        type = builtin
-                        name = eq_band_9
+                        type  = builtin
+                        name  = eq_band_9
                         label = bq_peaking
-                        control = { "Freq" = 5000.0 "Q" = 1.2 "Gain" = 7.0}
+                        control = { "Freq" = 7639.0 "Q" = 4.4 "Gain" = -2.5 }
                     }
                     {
-                        type = builtin
-                        name = eq_band_10
+                        type  = builtin
+                        name  = eq_band_10
                         label = bq_highshelf
-                        control = { "Freq" = 0000.0 "Q" = 0.71 "Gain" = -1.0}
+                        control = { "Freq" = 10000.0 "Q" = 0.7 "Gain" = 4.1 }
                     }
                 ]
                 links = [
@@ -80,7 +80,7 @@ context.modules = [
                     { output = "eq_band_6:Out" input = "eq_band_7:In" }
                     { output = "eq_band_7:Out" input = "eq_band_8:In" }
                     { output = "eq_band_8:Out" input = "eq_band_9:In" }
-                    { output = "eq_band_9:Out" input = "eq_band_10:In" }                    
+                    { output = "eq_band_9:Out" input = "eq_band_10:In" }
                 ]
             }
 	    audio.channels = 2
