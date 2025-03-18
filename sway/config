@@ -14,14 +14,39 @@ font Sans Serif Regular 11
 
 #
 # Example configuration:
+
+#! Scale Options Start !#
 #
-# output "BOE 0x0BCA Unknown" resolution 2256x1504@59.999HZ scale 1.5 position 0 0
-output "BOE 0x0BCA Unknown" resolution 2256x1504@59.999HZ scale 1.5 position 1280 1080
-# output eDP-1 resolution 2256x1504@59.999HZ scale 1.5
-# #Add scale 1.5 if necessary.
-output "Acer Technologies Acer XF270H B 0x9372943C" resolution 1920x1080@143.992HZ position 1280 0
-output "Acer Technologies GN246HL LW3AA0018533" resolution 1920x1080@60HZ position 3200 0
-output "Unknown Unknown Unknown" resolution 640x480@59.950HZ scale 0.5 position 0 0
+# Target Display = BOE 0x0BCA Unknown
+# Scale Options = 1, 1.5, 2
+#
+#! Scale Options End !#
+
+
+#! Display Start !#
+# Description = Laptop Only, Status = Enabled
+output "BOE 0x0BCA Unknown" scale 1.5 resolution 2256x1504@59.999HZ position 0 0 
+# Description = External GPU, Status = Disabled
+# output "BOE 0x0BCA Unknown" scale 1.5 resolution 2256x1504@59.999HZ position 1280 1080
+# output "Acer Technologies Acer XF270H B 0x9372943C" resolution 1920x1080@144HZ position 1280 0
+# output "Acer Technologies GN246HL LW3AA0018533" resolution 1920x1080@60HZ position 3200 0
+# output "Unknown Unknown Unknown" resolution 640x480@59.950HZ scale 0.5 position 0 0
+# Description = External GPU (No Small Monitor), Status = Disabled
+# output "BOE 0x0BCA Unknown" scale 1.5 resolution 2256x1504@59.999HZ position 0 1080
+# output "Acer Technologies Acer XF270H B 0x9372943C" resolution 1920x1080@144HZ position 0 0
+# output "Acer Technologies GN246HL LW3AA0018533" resolution 1920x1080@60HZ position 1920 0
+# output "Unknown Unknown Unknown" disable
+# Description = New Home, Status = Disabled
+# output "BOE 0x0BCA Unknown" scale 1.5 resolution 2256x1504@59.999HZ position 0 0
+# output "Acer Technologies Acer XF270H B 0x9372943C" resolution 1920x1080@144HZ position 1504 0
+# output "Unknown Unknown Unknown" disable
+# Description = New Home (Gaming), Status = Disabled
+# output "BOE 0x0BCA Unknown" scale 1.5 resolution 2256x1504@59.999HZ position -1504 0
+# output "Acer Technologies Acer XF270H B 0x9372943C" resolution 1920x1080@144HZ position 0 0
+# output "Unknown Unknown Unknown" disable
+#! Display End !#
+
+output "BOE 0x0BCA Unknown" color_profile icc '/home/fribbit/.local/share/icc/framework.icm'
 
 exec swaybg -i ~/.config/sway/wallpaper.png -m fill
 bindsym $mod+Shift+B exec swaybg -i ~/.config/sway/wallpaper.png -m fill
@@ -31,10 +56,12 @@ bindswitch --reload --locked lid:on exec '[ $(swaymsg -t get_outputs | grep name
 
 bindswitch --reload --locked lid:off output $laptop_screen enable
 
+#! SWAYIDLE START !#
 exec swayidle -w \
           timeout 300 'exec playerctl pause & exec /home/fribbit/.config/sway/scripts/lock_and_usbkill.sh' \
-          timeout 600 'exec systemctl suspend'\
+          timeout 600 'exec systemctl suspend' \
           timeout 1200 'exec systemctl hibernate'
+#! SWAYIDLE END !#
 
 # AUDIO CONTROLS
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -50,12 +77,20 @@ bindsym XF86MonBrightnessUp exec brightnessctl set 1%+
    input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
        tap enabled
        natural_scroll enabled
-dwt disabled
+dwt enabled
    }
 
 ### Key bindings
     # Take a Screenshot
     bindsym $mod+F12 exec grim ~/Pictures/screenshots/$(date +'%s_grim.png')
+    bindsym $mod+Shift+F12 exec slurp | grim -g - - | wl-copy
+
+    # Temporary fix for delete key
+    bindsym Alt+Shift+Backspace exec --no-startup-id wtype -k "delete"
+
+    # Temporary fix for insert key
+    bindsym Alt+Shift+Ctrl+Backspace exec --no-startup-id wtype -k "insert"
+
 
     # Start a terminal
     bindsym $mod+Return exec $term
@@ -90,6 +125,10 @@ dwt disabled
 
     bindsym $mod+Shift+g exec smart-gaps-switch
 
+    bindsym $mod+Shift+s exec sway-scale-switcher -s
+
+    bindsym $mod+Shift+t exec swayidle-switch
+
     # Can also be inverse for right click drag, left resize
     floating_modifier $mod normal
 
@@ -97,8 +136,8 @@ dwt disabled
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-    bindsym $mod+Shift+e exec sway exit
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    #bindsym $mod+Shift+e exec sway exit
 #
 # Moving around:
 #
@@ -217,15 +256,15 @@ smart_gaps on
   client.placeholder      #000000 #0c0c0c #000000 #000000 #000000
   client.background       #c0c0c0
 
-#shadows enable
-#shadow_blur_radius 5
-#shadow_color #0c0c0c
-#blur enable
-#blur_passes 1
-#blur_radius 4
-#corner_radius 2
-#default_dim_inactive .05
-#titlebar_separator enable
+# shadows enable
+# shadow_blur_radius 5
+# shadow_color #0c0c0c
+# blur enable
+# blur_passes 1
+# blur_radius 4
+# corner_radius 2
+# default_dim_inactive .1
+# titlebar_separator enable
 
 # for_window [class=".*"] tabbed enable, border normal
 # for_window [app_id=".*"] tabbed enable, border normal
